@@ -1403,6 +1403,7 @@ body::before {
     cursor: pointer;
     text-align: left;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: var(--font-primary), sans-serif !important;
 }
 
 /* Designer Tech button: Sand theme */
@@ -1909,21 +1910,25 @@ body {
 
 /* Slide 6 Button title scales */
 .btn-title {
+    font-family: var(--font-primary), sans-serif !important;
     font-size: 0.96rem !important;
-    font-weight: 800;
+    font-weight: 800 !important;
+    color: var(--color-text-primary) !important;
 }
 
 .btn-subtitle {
+    font-family: var(--font-primary), sans-serif !important;
     font-size: 0.8rem !important;
-    font-weight: 600;
+    font-weight: 600 !important;
+    color: var(--color-text-light) !important;
 }
 
 .btn-icon {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: var(--color-text-secondary);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: var(--font-primary), sans-serif !important;
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    color: var(--color-text-secondary) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .template-btn:hover .btn-icon {
@@ -1957,4 +1962,271 @@ h1, h2, h3, h4, h5, h6,
 /* Apply pretty to body text and lists to avoid orphans/runts dynamically */
 p, li, .subtitle-desc, .names-list, .report-desc, .tool-summary-desc {
     text-wrap: pretty !important;
+}
+
+/* ==========================================================================
+   21. IDDI Questionnaire - Table-Mock & Real DOCX Matching
+   ========================================================================== */
+.template-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.template-btn {
+    font-family: var(--font-primary), sans-serif !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    color: var(--color-text-primary) !important;
+}
+
+.template-btn * {
+    text-decoration: none !important;
+}
+
+/* Designer Tech download button: Sand theme */
+.template-btn.download-btn.tech-download-btn {
+    border-left: 4px solid var(--color-accent-sand) !important;
+}
+
+.template-btn.download-btn.tech-download-btn:hover {
+    background-color: var(--color-accent-sand-light) !important;
+    border-color: var(--color-accent-sand) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(196, 164, 130, 0.15) !important;
+}
+
+.template-btn.download-btn.tech-download-btn:hover .btn-subtitle {
+    color: var(--color-accent-sand) !important;
+}
+
+/* Business Client download button: Pine Green theme */
+.template-btn.download-btn.client-download-btn {
+    border-left: 4px solid var(--color-accent-green) !important;
+}
+
+.template-btn.download-btn.client-download-btn:hover {
+    background-color: var(--color-accent-green-light) !important;
+    border-color: var(--color-accent-green) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(63, 94, 77, 0.15) !important;
+}
+
+.template-btn.download-btn.client-download-btn:hover .btn-subtitle {
+    color: var(--color-accent-green) !important;
+}
+
+.template-header-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--color-accent-green);
+    color: #FFFFFF !important;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: var(--transition-fast);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.template-header-download-btn:hover {
+    background-color: var(--color-text-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.template-header-download-btn.tech-theme {
+    background-color: var(--color-accent-sand);
+}
+
+.template-header-download-btn.client-theme {
+    background-color: var(--color-accent-green);
+}
+
+/* Questionnaire Doc Mockups */
+.template-info-box {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.info-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 6px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-field.full-row {
+    grid-column: span 2;
+}
+
+.info-label {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--color-accent-green);
+}
+
+.info-placeholder {
+    background-color: #FFFFFF;
+    border: 1px dashed var(--color-border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* Sections and Tables */
+.template-sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.tpl-section {
+    width: 100%;
+}
+
+.tpl-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 6px;
+}
+
+.tpl-section .section-header h4 {
+    font-size: 1.05rem !important;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.table-mock {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-header-row {
+    background-color: var(--color-bg-secondary);
+    font-weight: 800;
+    font-size: 0.82rem;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.table-col {
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.table-col.col-capability {
+    border-right: 1px solid var(--color-border);
+    background-color: rgba(44, 42, 41, 0.01);
+}
+
+.table-col.col-capability strong {
+    font-size: 0.88rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+}
+
+.table-col.col-capability .desc {
+    font-size: 0.76rem;
+    color: var(--color-text-light);
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.tech-input-slots {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+}
+
+.tech-slot {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-secondary);
+    border: 1px dashed var(--color-border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slot-placeholder {
+    color: var(--color-text-light);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.tpl-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.tpl-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-red);
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .table-row {
+        grid-template-columns: 1fr;
+    }
+    .table-col.col-capability {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        background-color: rgba(44, 42, 41, 0.02);
+    }
 }

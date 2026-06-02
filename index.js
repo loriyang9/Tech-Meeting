@@ -277,56 +277,276 @@ document.addEventListener('DOMContentLoaded', () => {
     const backBtn = document.getElementById('template-back-btn');
     const viewBody = document.getElementById('template-view-body');
     const viewTitle = document.getElementById('template-view-title');
-    const viewTag = document.getElementById('template-view-tag');
+
 
     const techTemplateHtml = `
 <div class="mock-template-wrapper">
     <div class="template-header">
-        <span class="tpl-badge">範本草案</span>
-        <h3>IDDI 去塑專案：技術蒐集範本 (研發與設計團隊填寫)</h3>
-        <p class="tpl-intro">本範本旨在系統化盤點富迪既有與儲備之去塑結構工法及低碳紙材替代技術，藉此建構產品設計決策的基礎參數庫。</p>
+        <div class="tpl-badge-group">
+            <span class="tpl-date">截止日期：2026.06.11(四) 中午 12:00</span>
+        </div>
+        <h3>富迪現有技術/結構能力盤點表</h3>
+        <p class="tpl-intro"><strong>填寫說明：</strong>有符合「所具備的能力」的技術或結構，請寫下它的名稱，並貼上該技術或結構的照片。如果沒有名稱，請寫下內部習慣使用的稱呼。當你認為表格中沒有對應的技術或結構，請直接留空白；不確定的內容也可先填寫關鍵詞，訪談時再補充說明。如果你還想到重要、常使用，但是沒有列在「所具備的能力」，請直接在「其他」欄位裡補充。</p>
     </div>
     
-    <div class="template-fields-grid">
-        <div class="field-block">
-            <span class="field-label">1. 技術/結構名稱 (例如：全紙一體式卡扣、水性環保替塑油塗層)</span>
-            <div class="field-input-box placeholder-input">請填入技術或工法之官方/內部名稱...</div>
-        </div>
-        
-        <div class="field-block-row">
-            <div class="field-block">
-                <span class="field-label">2. 量產可行性階段</span>
-                <div class="field-radio-group">
-                    <span class="radio-item checked">✔ 已於現有產品中量產實證</span>
-                    <span class="radio-item">⬜ 未來 1-2 年內，極具量產潛能之儲備技術</span>
-                </div>
+    <div class="template-info-box">
+        <div class="info-title">填寫者資訊</div>
+        <div class="info-grid">
+            <div class="info-field">
+                <span class="info-label">姓名 / 職稱</span>
+                <div class="info-placeholder">請填寫填寫者之姓名與職稱...</div>
             </div>
-            <div class="field-block">
-                <span class="field-label">3. 適用功能與技術類別</span>
-                <div class="field-radio-group">
-                    <span class="radio-item checked">✔ 固定與保護</span>
-                    <span class="radio-item">⬜ 襯托承載</span>
-                    <span class="radio-item">⬜ 攜帶掛鉤</span>
-                    <span class="radio-item">⬜ 封口與收納</span>
-                </div>
+            <div class="info-field">
+                <span class="info-label">在富迪的年資</span>
+                <div class="info-placeholder">請填寫在富迪服務之年資...</div>
+            </div>
+            <div class="info-field full-row">
+                <span class="info-label">最熟悉、最擅長的紙結構、材料或技術類型</span>
+                <div class="info-placeholder">請填寫您最擅長之類型，例如：一體成型卡扣結構、蜂巢紙板結構、水性防潮塗層等...</div>
             </div>
         </div>
-
-        <div class="field-block">
-            <span class="field-label">4. 關鍵製程參數限制 (如厚度、塗布量、抗張強度等量產限制)</span>
-            <div class="field-textarea placeholder-textarea">例如：水性塗層塗布量限制在 4-6 g/m² 之間，烘乾溫度需控制在 105℃-115℃，避免紙張脆化...</div>
+    </div>
+    
+    <div class="template-sections-container">
+        <!-- Section 1 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h4>紙箱紙盒包裝本身的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">所具備的能力</div>
+                    <div class="table-col col-tech">技術或結構 (可填寫 1 ~ 4 項)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>長期倉儲存放穩定不易變質</strong>
+                        <span class="desc">如高溫或防潮</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>紙箱紙盒耐重、耐撞擊</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>持續使用不易壞</strong>
+                        <span class="desc">如支援重複開關扣合</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>運送時可壓縮或平整收納</strong>
+                        <span class="desc">或容易堆疊</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>便於回收再利用</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">填寫其他紙箱紙盒本身之設計技術或工法...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="field-block">
-            <span class="field-label">5. 物理性能驗證數據 (如承重能力 kg、拉力承受 N、防潮抗摔性)</span>
-            <div class="field-textarea placeholder-textarea">例如：在卡扣無膠結構下，垂直抗拉力可達 45N，雙層防震紙構承重能力極限達 15kg...</div>
+        <!-- Section 2 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h4>為了紙箱紙盒包裝內的物品所做的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">所具備的能力</div>
+                    <div class="table-col col-tech">技術或結構 (可填寫 1 ~ 4 項)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>防撞保護</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>內容物固定或定位，防位移</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>可從外看見並確認內容物狀態</strong>
+                        <span class="desc">如透明窗或開孔設計等</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>維持活體內容物安穩舒適或避免掙脫</strong>
+                        <span class="desc">如透光透氣、防抓或上鎖等</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">填寫其他內部物品保護相關之設計工法...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="field-block">
-            <span class="field-label">6. 照片、樣品或 3D 結構圖解</span>
-            <div class="field-upload-placeholder">
-                <span class="upload-icon-label">Drag & Drop / Click to Upload</span>
-                <p>請粘貼或上傳技術圖紙、打樣實物照片、或 3D 卡扣防呆榫卯結構渲染圖檔 (PDF / JPG / CAD)</p>
+        <!-- Section 3 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h4>針對使用紙箱紙盒包裝的人 (使用者) 所做的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">所具備的能力</div>
+                    <div class="table-col col-tech">技術或結構 (可填寫 1 ~ 4 項)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>使用的舒適度</strong>
+                        <span class="desc">如好握好提、符合人體工學、拿久了也不會不舒服</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>通用設計</strong>
+                        <span class="desc">如單手或力氣不足也可以操作 (無障礙使用)</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>保護使用者不受傷</strong>
+                        <span class="desc">如減少銳利邊緣、降低割傷風險</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>不用教學，或簡單提示與線索，使用者就會操作</strong>
+                        <span class="desc">不用教學，或簡單提示與線索，使用者就會操作 (直覺性操作)</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>外觀容易辨認</strong>
+                        <span class="desc">如視覺識別、印刷呈現不脫色</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">技術/結構名稱或內部稱呼 + 貼上照片...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">填寫其他針對使用者優化之設計工法...</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -335,44 +555,272 @@ document.addEventListener('DOMContentLoaded', () => {
     const clientTemplateHtml = `
 <div class="mock-template-wrapper">
     <div class="template-header">
-        <span class="tpl-badge badge-red">範本草案</span>
-        <h3>IDDI 去塑專案：客戶需求蒐集範本 (業務與行銷團隊填寫)</h3>
-        <p class="tpl-intro">本範本旨在精準蒐集歐美品牌與市場端對於去塑包裝之剛性法規需求與商務痛點，以回饋研發中心推動 Sales Kit 開發。</p>
+        <div class="tpl-badge-group">
+            <span class="tpl-date">截止日期：2026.06.11(四) 中午 12:00</span>
+        </div>
+        <h3>富迪客戶需求盤點表</h3>
+        <p class="tpl-intro"><strong>填寫說明：</strong>從客戶的角度，了解客戶對富迪的產品，有哪些需求、期待。當你認為表格中沒有提到、卻是客戶特別重視的需求，請直接在「其他」欄位裡補充。</p>
     </div>
     
-    <div class="template-fields-grid">
-        <div class="field-block">
-            <span class="field-label">1. 客戶/品牌所屬產業類別 (如：資通訊、美妝保養、生鮮冷鏈、國際 NGO)</span>
-            <div class="field-input-box placeholder-input">例如：北歐高階消費性電子品牌、歐美永續母嬰護理品牌...</div>
-        </div>
-        
-        <div class="field-block-row">
-            <div class="field-block">
-                <span class="field-label">2. 主要法規與 ESG 剛性指標需求</span>
-                <div class="field-radio-group">
-                    <span class="radio-item checked">✔ 歐盟 PPWR 合規 (減少包材空隙率及減塑)</span>
-                    <span class="radio-item">⬜ 100% 紙類回收 (不需人工分類拆解)</span>
-                    <span class="radio-item">⬜ Scope 3 供應鏈減碳目標限制</span>
-                </div>
+    <div class="template-info-box">
+        <div class="info-title">填寫者資訊</div>
+        <div class="info-grid">
+            <div class="info-field">
+                <span class="info-label">姓名 / 職稱</span>
+                <div class="info-placeholder">請填寫填寫者之姓名與職稱...</div>
             </div>
-            <div class="field-block">
-                <span class="field-label">3. 去塑推廣遇到之商務溝通痛點/談判瓶頸</span>
-                <div class="field-radio-group">
-                    <span class="radio-item checked">✔ 全紙結構扣合力或封口力不足</span>
-                    <span class="radio-item">⬜ 客戶擔心全紙包裝防潮防霉性</span>
-                    <span class="radio-item">⬜ 去塑替代成本偏高與空運材積限制</span>
+            <div class="info-field">
+                <span class="info-label">在富迪的年資</span>
+                <div class="info-placeholder">請填寫在富迪服務之年資...</div>
+            </div>
+            <div class="info-field full-row">
+                <span class="info-label">最熟悉領域或市場</span>
+                <div class="info-placeholder">請填寫您最熟悉之領域，例如：歐美電子產品包裝、東南亞物流市場、綠色永續包裝採購等...</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="template-sections-container">
+        <!-- Section 1 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h4>紙箱紙盒包裝本身的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">需求或期待</div>
+                    <div class="table-col col-tech">客戶需求 (可填寫 1 ~ 4 個客戶)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>長期倉儲存放穩定不易變質</strong>
+                        <span class="desc">如高溫或防潮</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>紙箱紙盒耐重、耐撞擊</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>持續使用不易壞</strong>
+                        <span class="desc">如支援重複開關扣合</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>運送時可壓縮或平整收納</strong>
+                        <span class="desc">或容易堆疊</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>便於回收再利用</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="field-block">
-            <span class="field-label">4. 客戶曾提出之特定去塑規格與物理要求 (描述客戶原先依賴塑膠之部分)</span>
-            <div class="field-textarea placeholder-textarea">例如：原先依賴 EPE 緩衝材保護，客戶要求全紙替代結構必須通過 1.2 米跌落測試，且不得有任何刮傷...</div>
+        <!-- Section 2 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h4>為了紙箱紙盒包裝內的物品所做的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">需求或期待</div>
+                    <div class="table-col col-tech">客戶需求 (可填寫 1 ~ 4 個客戶)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>防撞保護</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                            <div class="tech-slot">2. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>內容物固定或定位，防位移</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>可從外看見並確認內容物狀態</strong>
+                        <span class="desc">如透明窗或開孔設計等</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>維持活體內容物安穩舒適或避免掙脫</strong>
+                        <span class="desc">如透光透氣、防抓或上鎖等</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="field-block">
-            <span class="field-label">5. 預期與防災避難情境之對接點 (預估可用於哪些場景作為推廣說服點)</span>
-            <div class="field-textarea placeholder-textarea">例如：可對接「過度安置期」的低碳避難包裝箱，或「黃金72小時」的無工具快開醫療盒，向客戶展示防塵與防潑水實力...</div>
+        <!-- Section 3 -->
+        <div class="tpl-section">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h4>為了使用紙箱紙盒包裝的人 (使用者) 所做的設計</h4>
+            </div>
+            <div class="table-mock">
+                <div class="table-row table-header-row">
+                    <div class="table-col col-capability">需求或期待</div>
+                    <div class="table-col col-tech">客戶需求 (可填寫 1 ~ 4 個客戶)</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>使用的舒適度</strong>
+                        <span class="desc">如好握好提、符合人體工學、拿久了也不會不舒服</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>通用設計</strong>
+                        <span class="desc">如單手或力氣不足也可以操作 (無障礙使用)</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>保護使用者不受傷</strong>
+                        <span class="desc">如減少銳利邊緣、降低割傷風險</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>不用教學，或簡單提示與線索，使用者就會操作</strong>
+                        <span class="desc">直覺性操作</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>外觀容易辨認</strong>
+                        <span class="desc">如視覺識別、印刷呈現不脫色</span>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-col col-capability">
+                        <strong>其他</strong>
+                    </div>
+                    <div class="table-col col-tech">
+                        <div class="tech-input-slots">
+                            <div class="tech-slot">1. <span class="slot-placeholder">請具體寫下，過去客戶有的需求、期待，或是曾經提出的回饋...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>`;
@@ -382,21 +830,24 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation(); // Avoid triggering any keyboard or parent events
                 const type = btn.getAttribute('data-template');
+                const downloadLink = document.getElementById('template-download-link');
 
                 // Inject corresponding template HTML and update titles/classes
                 if (type === 'tech') {
                     viewBody.innerHTML = techTemplateHtml;
                     if (viewTitle) viewTitle.textContent = '技術蒐集範本';
-                    if (viewTag) {
-                        viewTag.textContent = '設計師專屬';
-                        viewTag.className = 'template-view-tag'; // Reset class
+                    if (downloadLink) {
+                        downloadLink.href = '技術盤點表_20260602.docx';
+                        downloadLink.download = '技術盤點表_20260602.docx';
+                        downloadLink.className = 'template-header-download-btn tech-theme';
                     }
                 } else if (type === 'client') {
                     viewBody.innerHTML = clientTemplateHtml;
                     if (viewTitle) viewTitle.textContent = '客戶需求蒐集範本';
-                    if (viewTag) {
-                        viewTag.textContent = '業務專屬';
-                        viewTag.className = 'template-view-tag client-tag'; // Add custom class
+                    if (downloadLink) {
+                        downloadLink.href = '客戶需求盤點表_20260602.docx';
+                        downloadLink.download = '客戶需求盤點表_20260602.docx';
+                        downloadLink.className = 'template-header-download-btn client-theme';
                     }
                 }
 
@@ -416,6 +867,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (backBtn) {
             backBtn.addEventListener('click', goBackToRoles);
+        }
+
+        // Isolate preview modal from slide scrolling & swiping propagation
+        if (fullViewWrapper) {
+            fullViewWrapper.addEventListener('wheel', (e) => {
+                e.stopPropagation();
+            }, { passive: false });
+
+            fullViewWrapper.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+            }, { passive: true });
+
+            fullViewWrapper.addEventListener('touchend', (e) => {
+                e.stopPropagation();
+            }, { passive: true });
         }
     }
 
