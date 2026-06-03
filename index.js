@@ -257,9 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
                      document.webkitFullscreenElement;
         
         if (isFS) {
-            fullscreenBtn.textContent = 'Collapse';
+            presentation.classList.add('fullscreen-mode');
+            fullscreenBtn.textContent = '✕';
             fullscreenBtn.setAttribute('aria-label', '退出全螢幕');
         } else {
+            presentation.classList.remove('fullscreen-mode');
             fullscreenBtn.textContent = '⛶';
             fullscreenBtn.setAttribute('aria-label', '全螢幕');
         }
@@ -283,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="mock-template-wrapper">
     <div class="template-header">
         <div class="tpl-badge-group">
-            <span class="tpl-date">截止日期：2026.06.11(四) 中午 12:00</span>
+            <span class="tpl-date">截止日期：2026.06.12(五) 中午 12:00</span>
         </div>
         <h3>富迪現有技術/結構能力盤點表</h3>
         <p class="tpl-intro"><strong>填寫說明：</strong>有符合「所具備的能力」的技術或結構，請寫下它的名稱，並貼上該技術或結構的照片。如果沒有名稱，請寫下內部習慣使用的稱呼。當你認為表格中沒有對應的技術或結構，請直接留空白；不確定的內容也可先填寫關鍵詞，訪談時再補充說明。如果你還想到重要、常使用，但是沒有列在「所具備的能力」，請直接在「其他」欄位裡補充。</p>
@@ -556,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="mock-template-wrapper">
     <div class="template-header">
         <div class="tpl-badge-group">
-            <span class="tpl-date">截止日期：2026.06.11(四) 中午 12:00</span>
+            <span class="tpl-date">截止日期：2026.06.12(五) 中午 12:00</span>
         </div>
         <h3>富迪客戶需求盤點表</h3>
         <p class="tpl-intro"><strong>填寫說明：</strong>從客戶的角度，了解客戶對富迪的產品，有哪些需求、期待。當你認為表格中沒有提到、卻是客戶特別重視的需求，請直接在「其他」欄位裡補充。</p>

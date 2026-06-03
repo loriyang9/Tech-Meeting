@@ -59,13 +59,13 @@ body {
 }
 
 /* Realistic Recycled Paper Grain Overlay */
-body::before {
+.presentation-container::before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     opacity: 0.04;
     pointer-events: none;
     z-index: 9999;
@@ -131,6 +131,7 @@ body::before {
     height: 100vh;
     position: relative;
     z-index: 10;
+    background-color: var(--color-bg-primary);
 }
 
 /* Sidebar Navigation */
@@ -1098,6 +1099,7 @@ body::before {
 .ctrl-btn {
     background: none;
     border: none;
+    outline: none;
     cursor: pointer;
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
@@ -1109,6 +1111,11 @@ body::before {
     align-items: center;
     justify-content: center;
     transition: var(--transition-fast);
+}
+
+.ctrl-btn:focus-visible {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
 }
 
 .ctrl-btn:hover {
@@ -1152,6 +1159,12 @@ body::before {
 }
 
 /* Fullscreen Mode Overrides */
+.presentation-container:fullscreen {
+    background-color: var(--color-bg-primary);
+}
+.presentation-container:-webkit-full-screen {
+    background-color: var(--color-bg-primary);
+}
 :fullscreen .sidebar {
     display: none;
 }
@@ -2230,3 +2243,170 @@ p, li, .subtitle-desc, .names-list, .report-desc, .tool-summary-desc {
         background-color: rgba(44, 42, 41, 0.02);
     }
 }
+
+/* ==========================================================================
+   17. Fullscreen Scale-up Overrides (全螢幕時字體與佈局極致放大)
+   ========================================================================== */
+.presentation-container.fullscreen-mode .slide-content {
+    max-width: 1380px;
+    max-height: 840px;
+}
+
+/* Titles and subtitle scaling */
+.presentation-container.fullscreen-mode .slide-title {
+    font-size: 2.9rem;
+    margin-bottom: 28px;
+}
+
+.presentation-container.fullscreen-mode .subtitle-desc {
+    font-size: 1.25rem;
+    max-width: 1000px;
+    margin-bottom: 36px;
+}
+
+.presentation-container.fullscreen-mode .slide-tag {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+}
+
+/* Cover Slide (Slide 1) */
+.presentation-container.fullscreen-mode .cover-slide .main-title {
+    font-size: 3.8rem;
+    margin-bottom: 30px;
+}
+
+.presentation-container.fullscreen-mode .meta-val {
+    font-size: 1.15rem;
+}
+
+.presentation-container.fullscreen-mode .meta-label {
+    font-size: 0.85rem;
+}
+
+/* Slide 2 Purpose Grid & Glass Cards scaling */
+.presentation-container.fullscreen-mode .purpose-grid h3 {
+    font-size: 1.55rem;
+}
+
+.presentation-container.fullscreen-mode .purpose-grid p {
+    font-size: 1.18rem;
+    line-height: 1.65;
+}
+
+.presentation-container.fullscreen-mode .card-icon-num {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+}
+
+.presentation-container.fullscreen-mode .glass-card {
+    padding: 30px;
+}
+
+.presentation-container.fullscreen-mode .bullet-list-sm li {
+    font-size: 1.22rem !important;
+}
+
+/* Slide 3 Define Go-Green compact cards */
+.presentation-container.fullscreen-mode .glass-card.compact h4 {
+    font-size: 1.25rem;
+}
+
+.presentation-container.fullscreen-mode .glass-card.compact p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.presentation-container.fullscreen-mode .step-num {
+    font-size: 2.2rem;
+}
+
+/* Slide 4 Expected Deliverables layout */
+.presentation-container.fullscreen-mode .deliver-grid h3 {
+    font-size: 1.6rem;
+}
+
+.presentation-container.fullscreen-mode .report-desc {
+    font-size: 1.12rem;
+}
+
+.presentation-container.fullscreen-mode .meta-value-text {
+    font-size: 0.96rem;
+}
+
+.presentation-container.fullscreen-mode .meta-label-tag {
+    font-size: 0.78rem;
+}
+
+.presentation-container.fullscreen-mode .tool-card-header h4 {
+    font-size: 1.22rem;
+}
+
+.presentation-container.fullscreen-mode .tool-summary-desc {
+    font-size: 0.95rem;
+}
+
+.presentation-container.fullscreen-mode .axis-summary-label,
+.presentation-container.fullscreen-mode .db-summary-label {
+    font-size: 0.8rem;
+}
+
+.presentation-container.fullscreen-mode .matrix-summary-col p {
+    font-size: 0.84rem;
+}
+
+.presentation-container.fullscreen-mode .db-summary-pill {
+    font-size: 0.84rem;
+    padding: 5px 10px;
+}
+
+/* Slide 6 Roles & Tasks cards */
+.presentation-container.fullscreen-mode .role-header h3 {
+    font-size: 1.5rem;
+}
+
+.presentation-container.fullscreen-mode .names-list {
+    font-size: 1.15rem;
+}
+
+.presentation-container.fullscreen-mode .role-label {
+    font-size: 0.88rem;
+}
+
+.presentation-container.fullscreen-mode .bullet-list-sm {
+    gap: 10px;
+}
+
+/* Slide 7 Timeline items */
+.presentation-container.fullscreen-mode .timeline-item h3 {
+    font-size: 1.35rem;
+}
+
+.presentation-container.fullscreen-mode .timeline-item p {
+    font-size: 1.12rem;
+}
+
+.presentation-container.fullscreen-mode .time-badge {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+}
+
+/* Slide 8 Actions & Q&A */
+.presentation-container.fullscreen-mode .action-box h3,
+.presentation-container.fullscreen-mode .qa-box h3 {
+    font-size: 1.55rem;
+}
+
+.presentation-container.fullscreen-mode .action-list li strong {
+    font-size: 1.2rem;
+}
+
+.presentation-container.fullscreen-mode .action-list li p {
+    font-size: 1.05rem;
+}
+
+.presentation-container.fullscreen-mode .qa-box p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+

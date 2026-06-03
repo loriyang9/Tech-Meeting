@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【簡報範本】您的簡報標題</title>
+    <!-- Google Fonts: 導入精緻的 Outfit 與 Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- 簡報主容器 -->
+    <main class="presentation-container">
+        <!-- 背景流光發光特效（可於 CSS 中更改顏色） -->
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+        <div class="bg-grid"></div>
+        
+        <!-- ==========================================
+             左側側邊欄目錄 (Sidebar Navigation)
+             ========================================== -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-text">BRAND</span>
+                <span class="logo-sub">專案副標題或企業標語</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <!-- data-slide 的數字與 href 對應下方投影片的 slide-1, slide-2... -->
+                <a href="#slide-1" class="nav-item active" data-slide="1">
+                    <span class="nav-num">00</span>
+                    <span class="nav-title">簡報封面</span>
+                </a>
+                <a href="#slide-2" class="nav-item" data-slide="2">
+                    <span class="nav-num">01</span>
+                    <span class="nav-title">文字與排版</span>
+                </a>
+                <a href="#slide-3" class="nav-item" data-slide="3">
+                    <span class="nav-num">02</span>
+                    <span class="nav-title">卡片式佈局</span>
+                </a>
+                <a href="#slide-4" class="nav-item" data-slide="4">
+                    <span class="nav-num">03</span>
+                    <span class="nav-title">雙欄對比圖</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <p>按 <strong>F</strong> 鍵全螢幕放映</p>
+                <p>左右方向鍵切換投影片</p>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             右側投影片主區域 (Slides Wrapper)
+             ========================================== -->
+        <section class="slides-wrapper">
+            
+            <!-- 投影片 1: 封面 (Cover Slide) -->
+            <article id="slide-1" class="slide active">
+                <div class="slide-content cover-slide">
+                    <div class="tag">專案系列名稱 ｜ 年度計畫名稱</div>
+                    <h1 class="main-title">
+                        這裡填寫您的<span class="accent-title">簡報核心大標題</span><br>與第二行標題文字
+                    </h1>
+                    <div class="divider"></div>
+                    <div class="meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">報告日期</span>
+                            <span class="meta-val">2026 年 6 月</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">專案階段</span>
+                            <span class="meta-val">探索與發現階段 (Discover)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">報告人 / 團隊</span>
+                            <span class="meta-val">Lori & 服務設計團隊</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">協同單位</span>
+                            <span class="meta-val">富迪永續辦公室</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 投影片 2: 文字與排版範本 -->
+            <article id="slide-2" class="slide">
+                <div class="slide-content">
+                    <span class="slide-tag">01. Typography & Content</span>
+                    <h2 class="slide-title">文字描述與列表排版樣式</h2>
+                    <p class="subtitle-desc">
+                        這是一張標準的文字投影片，適合用於背景說明、痛點整理與概念描述。字體經過特殊微調，即使在大型會議投影幕上也清晰可讀。
+                    </p>
+                    
+                    <!-- 可以放置項目清單 -->
+                    <div class="glass-card" style="padding: 30px; max-width: 900px;">
+                        <h3 style="color: var(--color-accent-green); margin-bottom: 15px; font-size: 1.3rem;">條列式重點說明：</h3>
+                        <ul class="bullet-list-sm" style="display: flex; flex-direction: column; gap: 12px; list-style-type: none;">
+                            <li style="font-size: 1.05rem; line-height: 1.6; color: var(--color-text-secondary); position: relative; padding-left: 20px;">
+                                <strong style="color: var(--color-text-primary);">第一項重點</strong>：使用無膠水卡扣設計，大幅度降低後續回收拆解的人力與材料成本。
+                            </li>
+                            <li style="font-size: 1.05rem; line-height: 1.6; color: var(--color-text-secondary); position: relative; padding-left: 20px;">
+                                <strong style="color: var(--color-text-primary);">第二項重點</strong>：導入 FSC® 認證永續紙材與防潮水性替塑油，解決高溫多濕的野外存放挑戰。
+                            </li>
+                            <li style="font-size: 1.05rem; line-height: 1.6; color: var(--color-text-secondary); position: relative; padding-left: 20px;">
+                                <strong style="color: var(--color-text-primary);">第三項重點</strong>：藉由防災場景（如避難休息罩）的極限實測，驗證去塑結構的大規模量產可行性。
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 投影片 3: 四卡片佈局範本 -->
+            <article id="slide-3" class="slide">
+                <div class="slide-content">
+                    <span class="slide-tag">02. Grid & Cards</span>
+                    <h2 class="slide-title">卡片式格狀排版：多核心要素呈現</h2>
+                    <p class="subtitle-desc">適用於展示並列的四個核心概念、研究目的或階段任務。簡約的紙質感毛玻璃卡片（Glassmorphism）具有微懸浮的懸停（hover）動畫效果。</p>
+                    
+                    <div class="purpose-grid">
+                        <div class="glass-card">
+                            <div class="card-icon-num">01</div>
+                            <h3>推動策略轉型</h3>
+                            <p>突破傳統包裝產業被動接單與削價競爭的紅海，轉型為主動定義規格的策略夥伴。</p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="card-icon-num">02</div>
+                            <h3>建立技術壁壘</h3>
+                            <p>以去塑專業為核心，系統化彙整能真實量產的材料、結構與工法，作為標準參考資料庫。</p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="card-icon-num">03</div>
+                            <h3>防災情境實證</h3>
+                            <p>透過極限的防災避難情境，向全球品牌客戶及國際 NGO 證明結構去塑的落地能量。</p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="card-icon-num">04</div>
+                            <h3>打造商務武器</h3>
+                            <p>將結構數據轉譯為具備 ESG 敘事力之溝通工具 (Sales Kit)，主動爭取歐美 B2B 訂單。</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 投影片 4: 雙欄排版範本 -->
+            <article id="slide-4" class="slide">
+                <div class="slide-content">
+                    <span class="slide-tag">03. Dual Columns Layout</span>
+                    <h2 class="slide-title">雙欄排版：左側摘要與右側卡片流</h2>
+                    
+                    <div class="deliver-grid unified-report-layout">
+                        <!-- 左側：高亮背景卡片 (Highlight Card) -->
+                        <div class="glass-card highlight-card report-overview-card">
+                            <div class="badge">核心研究重點</div>
+                            <h3>材料與結構研究報告：<span class="accent-title">量產去塑</span></h3>
+                            <div class="card-divider"></div>
+                            <p class="report-desc">
+                                本報告旨在收錄具備大規模量產潛能的材質與工法。所有技術皆需符合以下兩個核心指標：
+                            </p>
+                            <div class="report-meta">
+                                <div class="meta-line">
+                                    <span class="meta-label-tag">技術成熟度 (TRL)</span>
+                                    <strong class="meta-value-text">已於實際包裝產品中商用並量產之工法</strong>
+                                </div>
+                                <div class="meta-line" style="margin-top: 12px; border-top: 1px dashed rgba(44, 42, 41, 0.06); padding-top: 10px;">
+                                    <span class="meta-label-tag">環境永續指標</span>
+                                    <strong class="meta-value-text">100% 可回收，避免複合材料產生二次碳足跡</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 右側：子卡片清單 (Sub-cards Flow) -->
+                        <div class="glass-card report-structure-card">
+                            <h3 class="structure-title">關鍵應用工法</h3>
+                            <div class="card-divider"></div>
+                            <div class="chapters-container">
+                                
+                                <!-- 子卡片 1 -->
+                                <div class="glass-card report-tool-card">
+                                    <div class="tool-card-header">
+                                        <span class="chapter-num">01</span>
+                                        <h4>【卡扣結構】無膠榫卯紙構工程</h4>
+                                    </div>
+                                    <p class="tool-summary-desc">利用幾何應力扣合，不需任何膠水或膠帶即可完成組裝，提供高達 15kg 的垂直承重力。</p>
+                                </div>
+
+                                <!-- 子卡片 2 -->
+                                <div class="glass-card report-tool-card">
+                                    <div class="tool-card-header">
+                                        <span class="chapter-num">02</span>
+                                        <h4>【生質材料】低碳生質塗層應用</h4>
+                                    </div>
+                                    <p class="tool-summary-desc">採用 FSC 認證紙材結合天然生質阻抗塗層，達到出色的防油、防潮與阻氣物理性能。</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ==========================================
+             簡報控制與頁碼指示器 (Slide Controls)
+             ========================================== -->
+        <div class="slide-controls">
+            <button class="ctrl-btn prev-btn" aria-label="上一頁">←</button>
+            <div class="slide-indicator">
+                <span class="current-slide-num">1</span> / <span class="total-slide-num">4</span>
+            </div>
+            <button class="ctrl-btn next-btn" aria-label="下一頁">→</button>
+            <button class="ctrl-btn fullscreen-btn" aria-label="全螢幕">⛶</button>
+        </div>
+
+        <!-- 底部簡報進度條 (Progress Indicator) -->
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

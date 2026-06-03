@@ -1,0 +1,830 @@
+/* ==========================================================================
+   IDDI Presentation Template - MUJI Minimalist Elegant White Paper Style
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Variables (品牌視覺語彙配色與變數)
+   -------------------------------------------------------------------------- */
+:root {
+    /* 背景與基礎文字色 - 溫潤、有機與極簡 */
+    --color-bg-primary: #FDFCF7;        /* 暖調再生紙質底色 */
+    --color-bg-secondary: #F6F4EB;      /* 溫潤燕麥灰沙色（側邊欄底色） */
+    --color-text-primary: #2C2A29;      /* 木炭深灰（比純黑色更柔和、護眼） */
+    --color-text-secondary: #6B6560;    /* 溫暖中灰 */
+    --color-text-light: #A19B95;        /* 淡淡暖灰（說明文字用） */
+    
+    /* 核心品牌色與強調色（更換簡報主題時，只需在此更改色碼！） */
+    --color-accent-green: #3F5E4D;       /* 永續減塑生態綠 */
+    --color-accent-green-light: #ECEFEF; /* 柔和淺淡松綠（高亮背景） */
+    --color-accent-red: #8C2520;         /* 富迪防災深紅 */
+    --color-accent-red-light: #F9EBEA;   /* 柔和淺淡暗紅 */
+    --color-accent-sand: #C4A482;        /* 溫潤牛皮紙沙色 */
+    --color-accent-sand-light: #F8F5F0;  /* 柔和淺牛皮沙色 */
+
+    /* 卡片與邊框 */
+    --color-card-bg: #FFFFFF;
+    --color-border: rgba(44, 42, 41, 0.08);
+    --color-border-hover: rgba(44, 42, 41, 0.2);
+    --color-shadow-light: rgba(44, 42, 41, 0.03);
+    
+    /* 字體家族 (Outfit 搭配 Noto Sans TC 思源黑體) */
+    --font-primary: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* 佈局尺寸與轉場時間 */
+    --sidebar-width: 280px;
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1); /* 類 Apple 的高質感阻尼感轉場 */
+}
+
+/* --------------------------------------------------------------------------
+   2. 全域重設與真實紙張紋理疊加 (Paper Texture Overlay)
+   -------------------------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 擬真有機再生紙張纖維雜點疊加層 */
+.presentation-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   3. 背景發光流體裝飾與幾何結構網格 (Drifting Glow & Grids)
+   -------------------------------------------------------------------------- */
+.bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-glow-1 {
+    width: 500px;
+    height: 500px;
+    background-color: var(--color-accent-sand);
+    top: -100px;
+    right: -100px;
+    animation: drift 25s infinite alternate ease-in-out;
+}
+
+.bg-glow-2 {
+    width: 600px;
+    height: 600px;
+    background-color: var(--color-accent-green-light);
+    bottom: -150px;
+    left: 20%;
+    animation: drift 30s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 30px) scale(1.1); }
+}
+
+/* 極簡細緻的工程製圖網格背景線 */
+.bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 80px 80px;
+    background-image: 
+        linear-gradient(to right, rgba(44, 42, 41, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(44, 42, 41, 0.015) 1px, transparent 1px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. 簡報主容器與側邊欄排版 (Main Sidebar Layout)
+   -------------------------------------------------------------------------- */
+.presentation-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    background-color: var(--color-bg-primary);
+}
+
+/* 側邊欄導覽列 */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--color-bg-secondary);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+.logo {
+    margin-bottom: 50px;
+    border-left: 3px solid var(--color-accent-red);
+    padding-left: 15px;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--color-text-primary);
+    display: block;
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 1px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* 側邊欄菜單項目 */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    border-radius: 4px;
+    transition: var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: rgba(44, 42, 41, 0.03);
+    color: var(--color-text-primary);
+}
+
+.nav-item.active {
+    background-color: #FFFFFF;
+    color: var(--color-accent-green);
+    border-color: var(--color-border);
+    font-weight: 600;
+    box-shadow: 0 2px 4px var(--color-shadow-light);
+}
+
+.nav-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    width: 25px;
+    opacity: 0.6;
+}
+
+.nav-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-footer p {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    line-height: 1.4;
+}
+
+.sidebar-footer strong {
+    color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   5. 投影片主容器與動態切換機制 (Slide Transition Mechanics)
+   -------------------------------------------------------------------------- */
+.slides-wrapper {
+    flex-grow: 1;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: scale(0.98) translateY(10px);
+    transition: 
+        opacity 0.45s ease, 
+        transform 0.45s var(--transition-smooth), 
+        visibility 0.45s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px;
+    z-index: 1;
+}
+
+/* 啟動狀態的投影片 - 高質感淡入與微幅放大 */
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+    z-index: 5;
+}
+
+/* 投影片滑出切換的動畫狀態 */
+.slide.exit-left {
+    opacity: 0;
+    transform: scale(0.98) translateY(-10px);
+}
+
+.slide.exit-right {
+    opacity: 0;
+    transform: scale(0.98) translateY(10px);
+}
+
+.slide-content {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    max-height: 760px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   6. 常用投影片元件樣式 (Content Components)
+   -------------------------------------------------------------------------- */
+.slide-tag {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--color-accent-green);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.slide-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle-desc {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 800px;
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--color-border);
+    width: 100%;
+    margin: 30px 0;
+}
+
+/* 有機毛玻璃紙張卡片 (Glassmorphism Paper Card) */
+.glass-card {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 24px;
+    transition: transform 0.3s var(--transition-smooth), border-color 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
+    box-shadow: 0 4px 12px var(--color-shadow-light);
+}
+
+.glass-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 10px 20px rgba(44, 42, 41, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   7. 投影片 1: 封面樣式 (Cover Slide Style)
+   -------------------------------------------------------------------------- */
+.cover-slide {
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cover-slide .tag {
+    background-color: var(--color-accent-green-light);
+    color: var(--color-accent-green);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid rgba(63, 94, 77, 0.15);
+}
+
+.cover-slide .main-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    letter-spacing: -1px;
+}
+
+.cover-slide .accent-title {
+    color: var(--color-accent-red);
+    font-weight: 900;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.meta-val {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   8. 投影片 3: 網格卡片佈局 (Grid Cards Style)
+   -------------------------------------------------------------------------- */
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.purpose-grid .glass-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+}
+
+.card-icon-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-accent-sand);
+    background-color: var(--color-accent-sand-light);
+    border: 1px solid rgba(196, 164, 130, 0.2);
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.purpose-grid h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-accent-green);
+    margin-bottom: 6px;
+}
+
+.purpose-grid p {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   9. 投影片 4: 雙欄排版與對比資訊 (Dual Columns Layout)
+   -------------------------------------------------------------------------- */
+.deliver-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    height: calc(100% - 100px);
+}
+
+.deliver-grid .glass-card {
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    justify-content: center;
+}
+
+.highlight-card {
+    border-left: 4px solid var(--color-accent-green) !important;
+    background-color: var(--color-accent-sand-light) !important;
+}
+
+.badge {
+    background-color: var(--color-accent-green);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 2px;
+    align-self: flex-start;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.deliver-grid h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.card-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin-bottom: 20px;
+}
+
+/* 雙欄內容排列 */
+.unified-report-layout {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+    height: calc(100% - 70px);
+}
+
+.report-overview-card {
+    padding: 24px 30px !important;
+    justify-content: flex-start !important;
+}
+
+.report-overview-card h3 {
+    font-size: 1.7rem !important;
+    color: var(--color-accent-green) !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+}
+
+.report-overview-card h3 .accent-title {
+    color: var(--color-text-primary);
+    font-weight: 700;
+}
+
+.report-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin-bottom: 16px;
+}
+
+.report-meta {
+    margin-top: auto;
+    background-color: rgba(63, 94, 77, 0.04);
+    border-radius: 4px;
+    padding: 10px 14px;
+    border: 1px solid rgba(63, 94, 77, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meta-line {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+}
+
+.meta-label-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--color-accent-green);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.meta-value-text {
+    font-size: 0.82rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.report-structure-card {
+    padding: 18px 24px !important;
+    justify-content: flex-start !important;
+    overflow-y: auto;
+}
+
+.structure-title {
+    font-size: 1.2rem !important;
+    font-weight: 800;
+    margin-bottom: 12px !important;
+    color: var(--color-text-primary);
+}
+
+.chapters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.report-tool-card {
+    background-color: #FFFFFF !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 6px !important;
+    padding: 14px 16px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start !important;
+    gap: 4px;
+    box-shadow: 0 3px 10px rgba(44, 42, 41, 0.02) !important;
+}
+
+.tool-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.chapter-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #FFFFFF !important;
+    background-color: var(--color-accent-sand) !important;
+    width: 25px;
+    height: 25px;
+    border-radius: 4px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tool-card-header h4 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-accent-green);
+    margin: 0;
+    line-height: 1;
+}
+
+.tool-summary-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+    margin: 4px 0 6px 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. 簡報控制面版與進度指示條 (Interactive Controls)
+   -------------------------------------------------------------------------- */
+.slide-controls {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    padding: 6px 14px;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px var(--color-shadow-light);
+    z-index: 100;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+
+.ctrl-btn:focus-visible {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+}
+
+.ctrl-btn:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+}
+
+.slide-indicator {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    min-width: 50px;
+    text-align: center;
+}
+
+.current-slide-num {
+    color: var(--color-accent-green);
+    font-weight: 800;
+}
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: 4px;
+    background-color: rgba(44, 42, 41, 0.03);
+    z-index: 100;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-accent-green);
+    transition: width 0.3s ease;
+}
+
+/* 全螢幕模式微調 */
+.presentation-container:fullscreen {
+    background-color: var(--color-bg-primary);
+}
+
+.presentation-container:-webkit-full-screen {
+    background-color: var(--color-bg-primary);
+}
+
+.presentation-container:fullscreen .sidebar {
+    display: none; /* 全螢幕時隱藏側邊欄目錄，享受沈浸式發表 */
+}
+
+.presentation-container:-webkit-full-screen .sidebar {
+    display: none;
+}
+
+.presentation-container:fullscreen .progress-bar-container {
+    left: 0;
+}
+
+.presentation-container:-webkit-full-screen .progress-bar-container {
+    left: 0;
+}
+
+/* ==========================================================================
+   11. Fullscreen Scale-up Overrides (全螢幕時字體與佈局極致放大)
+   ========================================================================== */
+.presentation-container.fullscreen-mode .slide-content {
+    max-width: 1380px;
+    max-height: 840px;
+}
+
+/* Titles and subtitle scaling */
+.presentation-container.fullscreen-mode .slide-title {
+    font-size: 2.9rem;
+    margin-bottom: 28px;
+}
+
+.presentation-container.fullscreen-mode .subtitle-desc {
+    font-size: 1.25rem;
+    max-width: 1000px;
+    margin-bottom: 36px;
+}
+
+.presentation-container.fullscreen-mode .slide-tag {
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+}
+
+/* Cover Slide (Slide 1) */
+.presentation-container.fullscreen-mode .cover-slide .main-title {
+    font-size: 3.8rem;
+    margin-bottom: 30px;
+}
+
+.presentation-container.fullscreen-mode .meta-val {
+    font-size: 1.15rem;
+}
+
+.presentation-container.fullscreen-mode .meta-label {
+    font-size: 0.85rem;
+}
+
+/* Glass cards and lists scaling */
+.presentation-container.fullscreen-mode .glass-card {
+    padding: 30px;
+}
+
+.presentation-container.fullscreen-mode .glass-card h3 {
+    font-size: 1.55rem;
+}
+
+.presentation-container.fullscreen-mode .glass-card p {
+    font-size: 1.18rem;
+    line-height: 1.65;
+}
+
+.presentation-container.fullscreen-mode .card-icon-num {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+}
+
+.presentation-container.fullscreen-mode .bullet-list-sm li {
+    font-size: 1.22rem !important;
+}
+
+/* Dual Column Layouts (Slide 4) */
+.presentation-container.fullscreen-mode .deliver-grid h3 {
+    font-size: 1.6rem;
+}
+
+.presentation-container.fullscreen-mode .report-desc {
+    font-size: 1.12rem;
+}
+
+.presentation-container.fullscreen-mode .meta-value-text {
+    font-size: 0.96rem;
+}
+
+.presentation-container.fullscreen-mode .meta-label-tag {
+    font-size: 0.78rem;
+}
+
+.presentation-container.fullscreen-mode .tool-card-header h4 {
+    font-size: 1.22rem;
+}
+
+.presentation-container.fullscreen-mode .tool-summary-desc {
+    font-size: 0.95rem;
+}
+
+.presentation-container.fullscreen-mode .chapter-num {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+}
+
